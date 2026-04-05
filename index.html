@@ -808,9 +808,8 @@ z-index: 2;
 /* comilla inferior */
 .padres-texto::after{
   content: "”";
-  position: relative;
+  position: absolute;
   top: 290px;
-  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
 
@@ -823,7 +822,7 @@ z-index: 2;
 
 @media (max-width:600px){
   .padres-texto::after{
-    bottom:-20px;
+    top: 310px;
   }
 }
     
