@@ -1472,6 +1472,16 @@ section.regalos-vestimenta-grid::before{
   100%{ top:140%; }
 }
 
+@media (max-width:600px){
+
+@keyframes brilloOnda{
+  0%{ transform: translateY(60%) rotate(20deg); }
+  50%{ transform: translateY(-60%) rotate(20deg); }
+  100%{ transform: translateY(-60%) rotate(20deg); }
+}
+
+}
+    
 .divisor-onda-azul svg{
   display:block;
   width:100%;
@@ -1493,13 +1503,13 @@ section.regalos-vestimenta-grid::before{
   }
   .divisor-onda-azul::before{
     inset:auto 0 0 0;
-    height:40%;
+    height:50%;
   }
   .divisor-onda-azul::after{
-  top:60%;
-  left:-10%;
-  width:32%;
-  height:120%;
+  bottom:-8%;
+  left:-30%;
+  width:45%;
+  height:55%;
   }
 }
 
