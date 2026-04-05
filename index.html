@@ -849,6 +849,7 @@ z-index: 2;
   gap:5px;
   padding:10px 12px;
   border-radius:8px;
+  margin-bottom: 10px;       /* espacio entre cuadritos */
 
   background: rgba(255,255,255,0.10);
   border: 1px solid rgba(255,255,255,0.18);
@@ -859,11 +860,15 @@ z-index: 2;
   font-style: italic;            /* letra itálica */
 
   font-size:14px;
-  line-height:1.5;
+  line-height:1.3;
 
   text-align:left;
 }
 
+    .rec-item:last-child {
+    margin-bottom: 0; /* El último no necesita espacio abajo */
+}
+    
 .icono-rec{
   font-size:18px;
 }
