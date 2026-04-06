@@ -3211,10 +3211,9 @@ botonDia.addEventListener('click', () => {
 
   const estaAbierto = actividadesDiv.style.display === 'block';
 
-  document.querySelectorAll('.actividades-dia')
-    .forEach(el => el.style.display = 'none');
-
-  if (!estaAbierto) {
+  if (estaAbierto) {
+    actividadesDiv.style.display = 'none';
+  } else {
     actividadesDiv.style.display = 'block';
   }
 
