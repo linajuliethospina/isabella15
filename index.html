@@ -771,7 +771,7 @@ z-index: 2;
     }
 
 
-/* Animación para todo el bloque de los padres */
+/* Animación para aparecer todo el bloque de los padres */
 .padres-texto{
   position: relative;
   max-width: 900px;
@@ -779,13 +779,16 @@ z-index: 2;
   text-align: center;
   color: white;
   padding: 60px 40px;
+}
 
+/* clase general para aparecer */
+.animar-scroll{
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 2s ease, transform 2s ease;
 }
 
-.padres-texto.visible{
+.animar-scroll.visible{
   opacity: 1;
   transform: translateY(0);
 }
@@ -2671,7 +2674,7 @@ section.esperamos-box::before{
 <section class="seccion">
 
   <!-- MENSAJE DE LOS PADRES -->
-  <div class="padres-texto">
+  <div class="padres-texto animar-scroll">
     <div class="texto" style="margin-left:0;max-width:100%;margin-top:14px;font-style:'Playfair Display'
        ;">Con amor de mis padres</div>
     <div class="titulo-seccion" id="padresNombres">Nombre del padre & Nombre de la madre</div>
@@ -2694,7 +2697,7 @@ section.esperamos-box::before{
 
 </section>
 
-<section class="seccion invitado-seccion">
+<section class="seccion invitado-seccion animar-scroll">
 
 <div class="bokeh-invitado">
 
@@ -2756,7 +2759,7 @@ section.esperamos-box::before{
 
 
 
-<section id="ubicaciones" class="seccion">
+<section id="ubicaciones" class="seccion animar-scroll">
 
   <div class="ubicacion-col">
     <div class="liston-titulo" id="mapaFotosTitulo">Sesión de fotos</div>
@@ -2791,7 +2794,7 @@ section.esperamos-box::before{
 </section>
 
 
-<div class="texto-recfinal">Hagamos juntos un fin de semana épico. Aquí algunos detalles a tener en cuenta...</div>
+<div class="texto-recfinal animar-scroll">Hagamos juntos un fin de semana épico. Aquí algunos detalles a tener en cuenta...</div>
 
 
 <section class="seccion itinerario-box">
@@ -2898,7 +2901,7 @@ section.esperamos-box::before{
 
   <div class="esperamos-xv">XV</div>
 
-  <div class="esperamos-contenido">
+  <div class="esperamos-contenido animar-scroll">
 
     <p class="esperamos-titulo">TE ESPERAMOS</p>
 
@@ -3360,27 +3363,29 @@ document.getElementById('confirmarAsistenciaLink').textContent =
       actualizar();
       setInterval(actualizar, 1000);
     }
-function activarDedicatoriaAlScroll() {
-  const bloquePadres = document.querySelector('.padres-texto');
-  if (!bloquePadres) return;
+
+    function activarAnimacionesAlScroll() {
+  const bloques = document.querySelectorAll('.animar-scroll');
+  if (!bloques.length) return;
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        bloquePadres.classList.add('visible');
-        obs.unobserve(bloquePadres);
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.25
+    threshold: 0.20
   });
 
-  observer.observe(bloquePadres);
+  bloques.forEach(bloque => observer.observe(bloque));
 }
+    
     renderizarItinerario();
 cargarDatos();
 iniciarContador();
-activarDedicatoriaAlScroll();
+activarAnimacionesAlScroll();
   </script>
   
 </body>
