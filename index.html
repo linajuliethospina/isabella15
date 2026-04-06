@@ -3051,8 +3051,8 @@ section.esperamos-box::before{
 function obtenerDatosInvitadoDesdeURL() {
   const params = new URLSearchParams(window.location.search);
 
-  const nombreURL = params.get('nombre');
-  const cuposURL = params.get('cupos');
+  const nombreURL = params.get('n');
+  const cuposURL = params.get('c');
 
 const nombreFinal = nombreURL && nombreURL.trim()
   ? nombreURL.trim().replace(/-/g, " ")
