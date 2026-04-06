@@ -616,7 +616,7 @@ z-index: 2;
   }
 
   .contenido-onda{
-    margin-top: -10;
+    margin-top: -1px;
     position: relative;
     z-index: 5;
   }
@@ -3324,6 +3324,8 @@ document.getElementById('confirmarAntesTexto').textContent =
 
 document.getElementById('confirmarAsistenciaLink').textContent =
   DATOS.confirmacion.textoBoton;
+
+    }
 
     function iniciarContador() {
       const target = new Date(DATOS.evento.fechaISO).getTime();
