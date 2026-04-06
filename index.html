@@ -2898,6 +2898,7 @@ section.esperamos-box::before{
       <a id="confirmarAsistenciaLink"
          class="btn-confirmar-blanco"
          href="#"
+        onclick="abrirOpcionesConfirmacion()"
          target="_blank">
          Confirmar asistencia
       </a>
@@ -2974,7 +2975,6 @@ section.esperamos-box::before{
 
       confirmacion: {
         fechaLimite: "Confirmar antes del 1 de mayo de 2026",
-        whatsappUrl: "https://wa.me/573136735630?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%2015%20de%20Isabella.%0A%0APor%20favor%20indica%20tu%20opci%C3%B3n%3A%0A1.%20Museo%20de%20la%20Ca%C3%B1a%20%2F%20Parque%20Ecol%C3%B3gico%20Providencia%0A2.%20Finca%20Paolo%20Luxury%0A3.%20Ambas%20actividades%0A4.%20No%20asistir%C3%A9",
         textoBoton: "Confirmar asistencia"
       },
 
@@ -3237,6 +3237,56 @@ function toggleRecomendaciones() {
   bloque.classList.toggle('oculto');
 }
 
+    function abrirOpcionesConfirmacion() {
+
+  const datosInvitadoURL = obtenerDatosInvitadoDesdeURL();
+  const nombre = datosInvitadoURL.nombre;
+  const cupos = datosInvitadoURL.pases;
+
+  const telefono = "573136735630";
+
+  const opcion = prompt(
+`Confirma tu asistencia:
+
+1 - Confirmar museo
+2 - Confirmar finca
+3 - Ambas actividades
+4 - No asistiré
+
+Escribe el número de la opción:`
+  );
+
+  let mensaje = "";
+
+  if (opcion === "1") {
+    mensaje = `Hola, confirmo asistencia al Museo de la Caña / Parque Providencia.
+Invitado: ${nombre}
+Cupos: ${cupos}`;
+  }
+
+  if (opcion === "2") {
+    mensaje = `Hola, confirmo asistencia a la celebración en Finca Paolo Luxury.
+Invitado: ${nombre}
+Cupos: ${cupos}`;
+  }
+
+  if (opcion === "3") {
+    mensaje = `Hola, confirmo asistencia a ambas actividades (Museo y Finca).
+Invitado: ${nombre}
+Cupos: ${cupos}`;
+  }
+
+  if (opcion === "4") {
+    mensaje = `Hola, lamentablemente no podremos asistir a los 15 de Isabella.
+Invitado: ${nombre}`;
+  }
+
+  if (mensaje !== "") {
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+  }
+
+}
 
     function cargarDatos() {
       document.getElementById('portadaNombre').textContent = DATOS.celebracion.festejada;
@@ -3272,12 +3322,8 @@ document.getElementById('invitadoPasesNumero').textContent = datosInvitadoURL.pa
 document.getElementById('confirmarAntesTexto').textContent =
   DATOS.confirmacion.fechaLimite;
 
-document.getElementById('confirmarAsistenciaLink').href =
-  DATOS.confirmacion.whatsappUrl;
-
 document.getElementById('confirmarAsistenciaLink').textContent =
   DATOS.confirmacion.textoBoton;
-    }
 
     function iniciarContador() {
       const target = new Date(DATOS.evento.fechaISO).getTime();
