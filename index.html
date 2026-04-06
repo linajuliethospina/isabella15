@@ -275,13 +275,13 @@ z-index: 2;
       margin: 11px auto 0px 0px;
     }
     
-.texto-dedicatoria-padres {
-  margin-left:0;
+.texto-dedicatoria-padres{
+  margin:0;
   max-width:100%;
-  margin-top:50px;
   font-style:italic;
-  font-size: 16.5px;
+  font-size:16.5px;
   line-height:1.8;
+  padding:26px 0 22px;
 }
 
  
@@ -774,8 +774,7 @@ z-index: 2;
     }
 
 
-/* Animación para aparecer todo el bloque de los padres */
-
+/*Nuevo para comillas*/
 .padres-versiculo-box,
 .padres-dedicatoria-box{
   width:100%;
@@ -790,42 +789,70 @@ z-index: 2;
 
 .padres-versiculo-box{
   min-height:80px;
-  margin-top: -15px;
+  margin-top:-15px;
 }
 
 .padres-dedicatoria-box{
+  position:relative;
   min-height:125px;
-  margin-top: 1px;
+  margin-top:1px;
+  padding:22px 0 26px;
 }
 
+/* comillas ahora dependen de la dedicatoria */
+.padres-dedicatoria-box::before,
+.padres-dedicatoria-box::after{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:clamp(72px, 9vw, 120px);
+  color:rgba(255,255,255,0.18);
+  font-family:"Playfair Display", serif;
+  pointer-events:none;
+  line-height:1;
+}
 
+.padres-dedicatoria-box::before{
+  content:"“";
+  top:0;
+}
+
+.padres-dedicatoria-box::after{
+  content:"”";
+  bottom:0;
+}
+
+    
 @media (max-width:600px){
 
   .padres-versiculo-box{
-    max-height: 90px;
+    max-height:90px;
     padding:0 10px;
-    margin-top: -10px;
+    margin-top:-10px;
   }
 
   .padres-dedicatoria-box{
-    max-height:130px;
-    padding:0 10px;
-    margin-top: 40px;
+    min-height:130px;
+    padding:18px 10px 22px;
+    margin-top:40px;
   }
 
   .texto-versiculo{
-    font-size: clamp(10px,3.8vw,12px);
+    font-size:clamp(10px,3.8vw,12px);
     line-height:1.4;
     margin:0;
   }
 
   .texto-dedicatoria-padres{
-    font-size: clamp(13px,4vw,16px);
+    font-size:clamp(13px,4vw,16px);
     line-height:1.3;
     margin:0;
   }
 
-}    
+}
+
+    
+/*fin de bloque nuevo para comillas*/    
     
     
 /* clase general para aparecer */
@@ -840,44 +867,6 @@ z-index: 2;
   transform: translateY(0);
 }
 
-/* comilla superior */
-.padres-texto::before{
-  content: "“";
-  position: absolute;
-  top: 150px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  font-size: 120px;
-  color: rgba(255,255,255,0.18); /* transparencia */
-
-  font-family: "Playfair Display", serif;
-  pointer-events: none;
-}
-
-/* comilla inferior */
-.padres-texto::after{
-  content: "”";
-  position: absolute;
-  top: 290px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  font-size: 120px;
-  color: rgba(255,255,255,0.18);
-
-  font-family: "Playfair Display", serif;
-  pointer-events: none;
-}
-
-@media (max-width:600px){
-  .padres-texto::before{
-    top: 153px;
-  }
-  .padres-texto::after{
-    top: 330px;
-  }
-}
     
 /* RECOMENDACIONES */
 .recomendaciones-grid{
