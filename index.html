@@ -3054,9 +3054,9 @@ function obtenerDatosInvitadoDesdeURL() {
   const nombreURL = params.get('nombre');
   const cuposURL = params.get('cupos');
 
-  const nombreFinal = nombreURL && nombreURL.trim()
-    ? nombreURL.trim()
-    : DATOS.invitado.nombre;
+const nombreFinal = nombreURL && nombreURL.trim()
+  ? nombreURL.trim().replace(/-/g, " ")
+  : DATOS.invitado.nombre;
 
   const cuposNumero = Number.parseInt(cuposURL, 10);
   const cuposFinal = Number.isFinite(cuposNumero) && cuposNumero > 0
@@ -3318,6 +3318,7 @@ cargarDatos();
 iniciarContador();
 activarDedicatoriaAlScroll();
   </script>
+  
 </body>
 </html>
 
