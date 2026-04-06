@@ -2894,15 +2894,15 @@ section.esperamos-box::before{
       Acompáñanos a vivir un fin de semana lleno de amor, recuerdos y mucha alegría. ¡No olvides traer tu mejor sonrisa!
     </p>
 
-    <div class="esperamos-acciones">
-      <a id="confirmarAsistenciaLink"
-         class="btn-confirmar-blanco"
-         href="#"
-        onclick="abrirOpcionesConfirmacion()"
-         target="_blank">
-         Confirmar asistencia
-      </a>
-    </div>
+<div class="esperamos-acciones">
+  <a id="confirmarAsistenciaLink"
+     class="btn-confirmar-blanco"
+     href="#"
+     onclick="abrirOpcionesConfirmacion()"
+     target="_blank">
+     Confirmar asistencia
+  </a>
+</div>
 
   </div>
 
@@ -3237,7 +3237,7 @@ function toggleRecomendaciones() {
   bloque.classList.toggle('oculto');
 }
 
-    function abrirOpcionesConfirmacion() {
+ function abrirOpcionesConfirmacion() {
 
   const datosInvitadoURL = obtenerDatosInvitadoDesdeURL();
   const nombre = datosInvitadoURL.nombre;
@@ -3287,7 +3287,7 @@ Invitado: ${nombre}`;
   }
 
 }
-
+    
     function cargarDatos() {
       document.getElementById('portadaNombre').textContent = DATOS.celebracion.festejada;
       document.getElementById('portadaSubtitulo').textContent = DATOS.celebracion.subtitulo;
