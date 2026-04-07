@@ -803,8 +803,6 @@ z-index: 2;
 .padres-dedicatoria-box::before,
 .padres-dedicatoria-box::after{
   position:absolute;
-  left:50%;
-  transform:translateX(-50%);
   font-size:clamp(72px, 9vw, 120px);
   color:rgba(255,255,255,0.18);
   font-family:"Playfair Display", serif;
@@ -814,12 +812,15 @@ z-index: 2;
 
 .padres-dedicatoria-box::before{
   content:"“";
-  top:0;
+  top:-4px;
+  left:50%;
+  transform:translateX(-50%);
 }
 
 .padres-dedicatoria-box::after{
   content:"”";
-  bottom:0;
+  right:140px;
+  bottom:-6px;
 }
 
     
